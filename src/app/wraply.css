@@ -627,3 +627,6 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 .home .compare-instrument{flex:1;min-height:0;display:flex;flex-direction:column}
 .home .compare-canvas{flex:1;min-height:0;height:auto}
 .home .compare-instrument>:not(.compare-canvas){flex-shrink:0}
+@media(min-width:881px){
+ .home .cover-copy{width:min(30vw,30rem)}
+}
