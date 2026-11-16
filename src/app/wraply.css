@@ -645,7 +645,6 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
  .home .compare-delta p{justify-self:end;align-self:center}
  .home .collage-0{left:2.5%}
  .home .collage-1{right:2.5%}
- .home .cover-copy .collage-action.action-swap{width:min(34vw,36rem);max-width:none}
 }
 /* One shared scale for section headings, independent of each section's layout. */
 .home{--section-title-size:clamp(42px,6.8svh,76px)}
@@ -655,3 +654,13 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 .discovery-heading h1{font-size:clamp(2.8rem,7.1vw,7.5rem);line-height:1.08;overflow-wrap:break-word;text-wrap:balance}
 @media(max-width:880px){.home{--section-title-size:clamp(30px,5.5vw,42px)}}
 @media(max-width:360px){.home{--section-title-size:28px}}
+
+/* The heading alone defines the CTA column; body copy keeps its wider measure. */
+.home .cover-copy{display:grid;grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr);justify-items:center}
+.home .cover-copy h1{grid-column:2;grid-row:1;width:max-content}
+.home .cover-copy .cover-description{grid-column:1/-1;grid-row:2}
+.home .cover-copy .collage-action.action-swap{grid-column:2;grid-row:3;width:100%;max-width:100%;min-width:0;contain:inline-size}
+@media(max-width:600px){
+ .home .cover-copy .action-swap-text{padding-inline:.65em}
+ .home .cover-copy .action-swap-label{font-size:13px;line-height:1.15}
+}
