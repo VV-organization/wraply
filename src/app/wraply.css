@@ -155,7 +155,7 @@
 .cover-collage .collage-card-1 .print-type{color:#f3eaff}
 .cover-collage .print-1 .print-type{top:auto;bottom:5%}
 .cover-sticker{position:absolute;left:-6%;top:30%;width:24%;color:var(--pink);transform:rotate(-12deg);filter:drop-shadow(2px 0 0 #f9d9ed) drop-shadow(-2px 0 0 #f9d9ed) drop-shadow(0 2px 0 #f9d9ed) drop-shadow(0 -2px 0 #f9d9ed);transition:transform .8s cubic-bezier(.3,.075,0,1);z-index:5}
-.collage-1 .cover-sticker{left:auto;right:18%;top:18%;width:18%}
+.collage-1 .cover-sticker{left:auto;right:15%;top:18%;width:24%;color:var(--accent)}
 .cover-sticker svg{display:block;width:100%;height:auto}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .cover-collage .skin-print[data-selected=true]{transform:rotate(calc(var(--rotation) + 3deg)) scale(1.075);z-index:4}
