@@ -30,3 +30,11 @@
 Типографика использует локальный Inter Variable с кириллицей и знаком рубля. Основной текст — 400, названия и цены — 500–550, заголовки и кнопки — 600. Заголовки и кнопки сохраняют обычный регистр, трекинг заголовков −0,035em, числовые поля используют табличные цифры.
 
 Витринные изображения подобраны отдельно для Wraply. 28 покрытий CS2 и 16 предметов Rust/TF2 используют локальные файлы в public/art-direction. Идентификаторы выбранных предметов, категории и пути изображений хранятся в src/data/showcase-art.json. Новые покрытия CS2 сохраняют цены и дату исходного снимка в src/data/showcase-products.json. Основная подборка открывается на розово-фиолетовом «Градиенте», начальные наборы обложки, категорий, сравнения и конструктора различаются.
+
+### Comparison render sources (2026-11-16)
+The default Black Lotus and Decimator artwork uses full-size CS.MONEY finish-reference renders (1646×456 and 1665×450), rather than enlarged 512×384 Steam inventory thumbnails. These are illustrative finish references, not images of a particular live inventory asset or a guarantee of its Float. Product prices/conditions remain sourced from the existing snapshot.
+
+- https://wiki.cs.money/weapons/m4a1-s/black-lotus — https://s-wiki.cs.money/data/float-preview/m4a1-s-black-lotus/m4a1-s-black-lotus-large-ft-345230024efe.webp
+- https://wiki.cs.money/weapons/m4a1-s/decimator — https://s-wiki.cs.money/data/float-preview/m4a1-s-decimator/m4a1-s-decimator-large-ft-c00329498061.webp
+
+Original renders live in `public/comparison-sources`; `node scripts/prepare-comparison-assets.mjs` rebuilds the aligned, lossless WebP assets. AI regeneration was attempted but rejected by the image service; no AI-redrawn replacement is shipped.

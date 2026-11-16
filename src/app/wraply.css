@@ -623,10 +623,35 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 .home>section.wrap-categories{display:flex;flex-direction:column}
 .home .wrap-categories .class-list{flex:1;display:flex;flex-direction:column;min-height:0}
 .home .wrap-categories .class-line{flex:1;min-height:0}
-.home>section.compare-lab{display:flex;flex-direction:column}
-.home .compare-instrument{flex:1;min-height:0;display:flex;flex-direction:column}
+.home>section.compare-lab{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.home .compare-instrument{flex:1;min-height:0;width:100%;display:flex;flex-direction:column}
 .home .compare-canvas{flex:1;min-height:0;height:auto}
 .home .compare-instrument>:not(.compare-canvas){flex-shrink:0}
 @media(min-width:881px){
  .home .cover-copy{width:min(30vw,30rem)}
 }
+.topup-panel h3>.topup-ink{display:inline-flex;align-self:center;flex:none;line-height:0}
+.ink-arrow{display:block;width:1em;height:.95em;overflow:visible}
+/* Comparison gives the product image the largest share of the viewport. */
+.home .compare-layer img{width:96%;height:96%}
+@media(min-width:881px){
+ .home .compare-pickers .choice-trigger{padding:10px 16px;min-height:48px}
+ .home .compare-readout{margin-top:10px}
+ .home .compare-readout dl{display:grid;grid-template-columns:.6fr 1.6fr .8fr;gap:12px}
+ .home .compare-readout dl>div{display:flex;flex-direction:column;align-items:flex-start;gap:3px;margin:0}
+ .home .compare-readout dd{text-align:left}
+ .home .compare-delta{grid-template-columns:auto auto 1fr;align-items:center;gap:16px;margin-top:10px;padding-top:10px}
+ .home .compare-delta>span,.home .compare-delta>strong,.home .compare-delta p{grid-column:auto;grid-row:auto;margin:0}
+ .home .compare-delta p{justify-self:end;align-self:center}
+ .home .collage-0{left:2.5%}
+ .home .collage-1{right:2.5%}
+ .home .cover-copy .collage-action.action-swap{width:min(34vw,36rem);max-width:none}
+}
+/* One shared scale for section headings, independent of each section's layout. */
+.home{--section-title-size:clamp(42px,6.8svh,76px)}
+.home>section[aria-labelledby] h2,
+.home>section.section :is(.section-heading,.chapter-heading,.converter-heading,.blind-heading,.spectrum-top) h2,
+.home>section.wrap-faq h2{font-size:var(--section-title-size);line-height:1.08;font-weight:600;letter-spacing:-.035em}
+.discovery-heading h1{font-size:clamp(2.8rem,7.1vw,7.5rem);line-height:1.08;overflow-wrap:break-word;text-wrap:balance}
+@media(max-width:880px){.home{--section-title-size:clamp(30px,5.5vw,42px)}}
+@media(max-width:360px){.home{--section-title-size:28px}}
