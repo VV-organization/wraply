@@ -1,0 +1,115 @@
+/* Extrafazant, “Meer over ons”: the moving parts use the button's own em. */
+:root {
+  --action-unit: calc(clamp(992px, 100dvw, 3840px) / 120);
+}
+@media (min-width: 992px) and (min-aspect-ratio: 11/5) {
+  :root { --action-unit: calc(clamp(992px, min(100dvw, 100dvh * 16 / 9), 3840px) / 120); }
+}
+@media (max-width: 991px) {
+  :root { --action-unit: calc(clamp(768px, 100dvw, 991px) * 16 / 991); }
+}
+@media (max-width: 767px) {
+  :root { --action-unit: calc(clamp(480px, 100dvw, 767px) * 16 / 767); }
+}
+@media (max-width: 479px) {
+  :root { --action-unit: calc(clamp(320px, 100dvw, 479px) * 16 / 479); }
+}
+
+:is(.button, .wrap-login, .collage-action).action-swap {
+  --action-fill: var(--accent);
+  --action-height: 3.6em;
+  --action-soft: cubic-bezier(.59, 1, .88, 1.01);
+  --action-bounce: cubic-bezier(.34, 2.27, .64, 1);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  gap: .125em;
+  width: fit-content;
+  max-width: 100%;
+  height: var(--action-height);
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+  overflow: visible;
+  color: #fff;
+  font-size: var(--action-unit);
+  line-height: 1;
+  user-select: none;
+}
+.button.action-swap.secondary { --action-fill: var(--surface); }
+.action-swap.secondary :is(.action-swap-text, .action-swap-icon-bg) { box-shadow: inset 0 0 0 1px var(--control); }
+.action-swap .action-swap-icon {
+  height: 100%;
+  aspect-ratio: 1;
+  flex: none;
+  display: grid;
+  pointer-events: none;
+}
+.action-swap-icon-bg, .action-swap-icon > svg { grid-area: 1 / 1; }
+.action-swap-icon-bg { background: var(--action-fill); }
+.action-swap .action-swap-icon > svg { width: .875em; height: .875em; place-self: center; }
+.action-swap-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1.75em;
+  background: var(--action-fill);
+  will-change: transform;
+  transition: translate .8s var(--action-spring), rotate .8s var(--action-spring),
+    scale .15s var(--action-soft), transform .15s var(--action-soft);
+}
+.action-swap .action-swap-label {
+  font-size: 1.125em;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  text-transform: none;
+}
+.action-swap-icon.is-default {
+  transition: scale .75s var(--action-spring), opacity .15s ease-out;
+}
+.action-swap-icon.is-hover {
+  position: absolute;
+  top: -.125em;
+  right: -.325em;
+  scale: 0;
+  opacity: 0;
+  transition: scale .75s var(--action-spring), opacity .15s .1s ease-out;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .action-swap:not(:disabled):is(:hover, :focus-visible) > .action-swap-text {
+    translate: calc(-1 * var(--action-height)) -.325em 0;
+    rotate: -3deg;
+    scale: .935 .905;
+    transform: scale(1.0695187166, 1.1049723757);
+    transition: translate .8s .05s var(--action-spring), rotate .8s .05s var(--action-spring),
+      scale .15s .05s var(--action-soft), transform .45s .2s var(--action-bounce);
+  }
+  .action-swap:not(:disabled):is(:hover, :focus-visible) > .is-default {
+    scale: 0;
+    opacity: 0;
+    transition: scale .75s .05s var(--action-spring), opacity .15s .2s ease-out;
+  }
+  .action-swap:not(:disabled):is(:hover, :focus-visible) > .is-hover {
+    scale: 1;
+    opacity: 1;
+    transition: scale .75s .1s var(--action-spring), opacity .15s ease-out;
+  }
+}
+.action-swap-text { min-width: 0; }
+@media(max-width:360px){
+  .wrap-login.action-swap .action-swap-text { padding-inline: .5em; }
+  .loadout-console .action-swap .action-swap-text { padding-inline: .75em; }
+}
+
+.cover-copy .collage-action.action-swap {
+  --action-height: max(4.5em, 56px);
+  width: 100%;
+}
+.cover-copy .action-swap-text { flex: 1; }
+.cover-copy .action-swap-label { font-size: clamp(15px, 1.1vw, 18px); }

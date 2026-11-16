@@ -1,0 +1,165 @@
+/* Neutral stages let the finish of each skin supply its own colour.
+   Cobalt, rose and the neutral endpoints come from Extrafazant's dark sections. */
+:root {
+  color-scheme: dark;
+  --bg: #101010;
+  --surface: #191919;
+  --raised: #242424;
+  --hover: #303030;
+  --text: #f4f4f4;
+  --muted: #c2c2c2;
+  --subtle: #ababab;
+  --border: #414141;
+  --control: #808080;
+  --accent: #0038ff;
+  --accent-hover: #244dff;
+  --accent-active: #002ac5;
+  --focus: #a5b8ff;
+  --accent-ink: #9aaeff;
+  --pink: #ff77cd;
+  --error: #ffb3ac;
+  --error-bg: #371e21;
+  --success: #affeac;
+  --success-bg: #172a1c;
+  --display-serif: var(--font-display), sans-serif;
+}
+
+::selection { color: var(--bg); background: var(--pink); }
+
+:where(button, a, input, summary, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.catalog-page > .catalog-intro h1,
+.page-heading h1,
+.account-guest h1 {
+  font-size: clamp(2.8rem, 7.1vw, 7.5rem);
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  text-transform: none;
+  overflow-wrap: break-word;
+}
+
+.home :is(.section-heading, .blind-heading, .spectrum-top, .chapter-heading, .category-atlas > header, .converter-heading) h2,
+.detail-page .section-heading h2 {
+  font-weight: 600;
+  font-size: clamp(2.25rem, 5.5vw, 5.75rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+  text-transform: none;
+}
+
+.topup-panel h3,
+.cart-item-name h2,
+.category-poster h3,
+.product-info h3,
+.account-topup h2,
+.choice-trigger strong,
+.price-main { font-weight: 600; }
+
+.detail-content :is(h1, h2) { font-weight: 650; }
+
+.detail-content :is(h1, h2) > span,
+.spectrum-caption h3,
+.converter-rule strong,
+.topup-panel h3 > span {
+  font-family: var(--display-serif);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -.045em;
+}
+
+.detail-content :is(h1, h2) > span { color: var(--text); }
+.topup-panel h3 > span { color: var(--accent-ink); }
+.game-name { font-weight: 650; letter-spacing: -.05em; }
+.price-main small { color: var(--muted); }
+
+.button.primary,
+.cart-notice > a { color: #fff; background-color: var(--accent); }
+
+.spectrum,
+.converter,
+.arsenal,
+.blind-choice { background: var(--surface); }
+
+.spectrum-dock button,
+.blind-option,
+.loadout-slots { background: var(--bg); }
+
+.blind-option.is-chosen,
+.category-poster:nth-child(odd) { background: var(--raised); }
+
+.blind-mystery-mark {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--control);
+}
+
+.catalog-games > button[aria-pressed=true] {
+  background: var(--surface);
+  border-bottom-color: var(--accent-ink);
+}
+
+.equation-equals,
+.loading-mark,
+.profile-avatar span,
+.catalog-games [aria-pressed=true] .game-mark { color: var(--accent-ink); }
+
+.product-card:hover { background: var(--raised); }
+.product-card::after {
+  border-width: 0 0 3px;
+  border-color: var(--accent-ink);
+  background: none;
+}
+
+.modal::backdrop { background: rgb(10 10 10 / 85%); }
+.cart-notice { border-block-start: 3px solid var(--accent-ink); }
+
+.inspection-slate { background: var(--raised); }
+.inspection-dark { background: #080808; }
+.inspection-word { color: rgb(244 244 244 / 9%); }
+.inspection-tools { background: rgb(16 16 16 / 92%); }
+.inspection-surfaces .surface-slate { background: var(--raised); }
+.inspection-surfaces .surface-dark { background: #080808; }
+
+.float-track {
+  background: linear-gradient(90deg, #ababab 7%, #919191 7% 15%, #777 15% 38%, #555 38% 45%, #383838 45%);
+}
+.float-track > span,
+.compare-divider { background: var(--pink); }
+.compare-divider b { background: var(--pink); color: var(--bg); }
+
+.account-sidebar nav > .active { box-shadow: inset 0 -2px var(--accent-ink); }
+.form-message.success {
+  color: var(--success);
+  background: var(--success-bg);
+  border-color: var(--success);
+}
+
+/* Strokes disappear towards the outgoing edge, as on the reference's CTA. */
+.text-link {
+  position: relative;
+  border-bottom-color: transparent;
+}
+.text-link::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: var(--accent-ink);
+  border-radius: 90% 20% 75% 30%;
+  transform: scaleX(.32) rotate(-.7deg);
+  transform-origin: left;
+  transition: transform .35s cubic-bezier(.25,.7,.2,1);
+}
+.text-link:focus-visible::after { transform: scaleX(1) rotate(-.7deg); }
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover::after { transform: scaleX(1) rotate(-.7deg); }
+  .cart-notice > a:hover { background: var(--accent-hover); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-link::after { transition: none; }
+}

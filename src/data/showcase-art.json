@@ -1,0 +1,88 @@
+{
+  "categoryItems": {
+    "cs2": {
+      "knife": "ref-cs2-9aa0d2f9-38fe-4112-956b-8d86042c41df",
+      "rifle": "ref-cs2-afe01a05-535f-431c-aad1-c6d3a6872343",
+      "pistol": "ref-cs2-b16db14e-9368-4f08-98fe-56320ab20078",
+      "smg": "ref-cs2-b1d023df-05d5-450d-851b-71caca0e7220",
+      "gloves": "ref-cs2-d686f4fe-ae98-41a6-8097-282f40f5a239"
+    },
+    "rust": {
+      "Armor": "ref-rust-333b5e40-9a7d-4d48-91ed-9e3370dac4ab",
+      "Clothing": "ref-rust-d6d52116-1fe3-4e25-9c13-a6a96d1dd505",
+      "Misc": "ref-rust-679e67c4-1bbf-4d4d-9669-a1fddcfe6f32",
+      "Resource": "ref-rust-5e0ebb41-00a0-4cfd-8f67-f7364c86f935",
+      "Weapon": "ref-rust-d1dbd1b5-b297-49eb-8267-ab970adcb2e9"
+    },
+    "tf2": {
+      "Hat": "ref-tf2-a0d9f569-8448-4bb8-b92f-748997f033ed",
+      "Rocket Launcher": "ref-tf2-8711b6ce-82fb-4d6f-8e7c-4ce64ac8b797",
+      "War Paint": "ref-tf2-82e43c9d-ca37-43d3-9220-5dd76c7dc8da",
+      "Special Taunt": "ref-tf2-955a229f-8ad6-4f70-a143-e580c2b6d2de",
+      "Tool": "ref-tf2-7dd0a3c0-7862-4036-ae90-c30b87a28bb3"
+    }
+  },
+  "builderItems": {
+    "cs2": [
+      "ref-cs2-b1533a61-f958-4ce1-879d-ad0314b13998",
+      "ref-cs2-1cec11dd-7341-4ba4-b1f7-7c615ea61a00",
+      "ref-cs2-d9c63058-72a2-43ae-951c-1cd77c8e77e1"
+    ],
+    "rust": [
+      "ref-rust-60f21939-e80d-4d05-b633-88514b0e5c5b",
+      "ref-rust-0ba9db9a-f684-40b9-9467-d4393f70c124",
+      "ref-rust-0741d422-516e-4fdc-9d58-fec485a2c302"
+    ],
+    "tf2": [
+      "ref-tf2-5957a936-851e-44e2-89dd-637a1274e9d7",
+      "ref-tf2-6c5214d7-b4c1-4097-b294-a17156a2ee1e",
+      "ref-tf2-3045dbb7-3084-4098-9631-50244a5b8604"
+    ]
+  },
+  "assets": {
+    "ref-cs2-eacc941f-a04f-4438-b217-1cdd4d5d2b73": "/art-direction/hero-rifle.webp",
+    "ref-cs2-01483978-1e42-4a9e-92ad-a20e4b421404": "/art-direction/hero-gloves.webp",
+    "ref-cs2-21c3eb4a-4dee-43b2-b399-66f2afec39ae": "/art-direction/hero-knife.webp",
+    "ref-cs2-ba8ee685-a94d-4f3a-9ef7-50505fbf8182": "/art-direction/hero-sniper.webp",
+    "ref-cs2-5f74be50-1f0f-4eee-bca5-7043169df47c": "/art-direction/blue-knife.webp",
+    "ref-cs2-4bed6f47-969b-45f6-b08e-5ecbdf867a79": "/art-direction/blue-pistol.webp",
+    "ref-cs2-e51bca0d-ef7b-4802-9aed-93e2bd3d9271": "/art-direction/blue-knife-alt.webp",
+    "ref-cs2-8241fd48-2611-4a7b-85c0-b6ac5ecffb2b": "/art-direction/blue-pistol-alt.webp",
+    "ref-cs2-75a13ee6-218d-487a-aea2-3f68b18fd01a": "/art-direction/pink-knife.webp",
+    "ref-cs2-03ebbfb8-eaf9-4a9a-9702-a7d5ce4ebfca": "/art-direction/pink-smg.webp",
+    "ref-cs2-037eea09-9892-4ac2-b7be-bdd8da465c59": "/art-direction/pink-knife-alt.webp",
+    "ref-cs2-5a409367-4cc0-4f34-ad65-3e28f117741a": "/art-direction/pink-smg-alt.webp",
+    "ref-cs2-cb211601-3e0e-41bf-aceb-aeb1933a04c0": "/art-direction/orange-knife.webp",
+    "ref-cs2-653a47b0-044c-4f59-8f45-47411e83b0be": "/art-direction/orange-pistol.webp",
+    "ref-cs2-d394c77b-e46e-41a5-b9c3-f60cc02b2443": "/art-direction/orange-knife-alt.webp",
+    "ref-cs2-84493726-e056-4728-9459-109e3afcad51": "/art-direction/orange-pistol-alt.webp",
+    "ref-cs2-b6731ad5-d48c-415c-a9e6-b345ba0c4203": "/art-direction/compare-a.webp",
+    "ref-cs2-d02d287d-b8fc-4d9c-b810-632a7d4af6dd": "/art-direction/compare-b.webp",
+    "ref-cs2-9aa0d2f9-38fe-4112-956b-8d86042c41df": "/art-direction/category-knife.webp",
+    "ref-cs2-afe01a05-535f-431c-aad1-c6d3a6872343": "/art-direction/category-rifle.webp",
+    "ref-cs2-b16db14e-9368-4f08-98fe-56320ab20078": "/art-direction/category-pistol.webp",
+    "ref-cs2-b1d023df-05d5-450d-851b-71caca0e7220": "/art-direction/category-smg.webp",
+    "ref-cs2-d686f4fe-ae98-41a6-8097-282f40f5a239": "/art-direction/category-gloves.webp",
+    "ref-cs2-b1533a61-f958-4ce1-879d-ad0314b13998": "/art-direction/builder-pistol.webp",
+    "ref-cs2-1cec11dd-7341-4ba4-b1f7-7c615ea61a00": "/art-direction/builder-rifle.webp",
+    "ref-cs2-d9c63058-72a2-43ae-951c-1cd77c8e77e1": "/art-direction/builder-knife.webp",
+    "ref-cs2-2a61bd3b-1dea-42e1-b352-50081f74c80d": "/art-direction/blind-usp.webp",
+    "ref-cs2-43be6b62-fe5c-4d61-980d-06dd72afc8fb": "/art-direction/blind-deagle.webp",
+    "ref-rust-333b5e40-9a7d-4d48-91ed-9e3370dac4ab": "/art-direction/rust-category-0.webp",
+    "ref-rust-d6d52116-1fe3-4e25-9c13-a6a96d1dd505": "/art-direction/rust-category-1.webp",
+    "ref-rust-679e67c4-1bbf-4d4d-9669-a1fddcfe6f32": "/art-direction/rust-category-2.webp",
+    "ref-rust-5e0ebb41-00a0-4cfd-8f67-f7364c86f935": "/art-direction/rust-category-3.webp",
+    "ref-rust-d1dbd1b5-b297-49eb-8267-ab970adcb2e9": "/art-direction/rust-category-4.webp",
+    "ref-rust-60f21939-e80d-4d05-b633-88514b0e5c5b": "/art-direction/rust-builder-0.webp",
+    "ref-rust-0ba9db9a-f684-40b9-9467-d4393f70c124": "/art-direction/rust-builder-1.webp",
+    "ref-rust-0741d422-516e-4fdc-9d58-fec485a2c302": "/art-direction/rust-builder-2.webp",
+    "ref-tf2-a0d9f569-8448-4bb8-b92f-748997f033ed": "/art-direction/tf2-category-0.webp",
+    "ref-tf2-8711b6ce-82fb-4d6f-8e7c-4ce64ac8b797": "/art-direction/tf2-category-1.webp",
+    "ref-tf2-82e43c9d-ca37-43d3-9220-5dd76c7dc8da": "/art-direction/tf2-category-2.webp",
+    "ref-tf2-955a229f-8ad6-4f70-a143-e580c2b6d2de": "/art-direction/tf2-category-3.webp",
+    "ref-tf2-7dd0a3c0-7862-4036-ae90-c30b87a28bb3": "/art-direction/tf2-category-4.webp",
+    "ref-tf2-5957a936-851e-44e2-89dd-637a1274e9d7": "/art-direction/tf2-builder-0.webp",
+    "ref-tf2-6c5214d7-b4c1-4097-b294-a17156a2ee1e": "/art-direction/tf2-builder-1.webp",
+    "ref-tf2-3045dbb7-3084-4098-9631-50244a5b8604": "/art-direction/tf2-builder-2.webp"
+  }
+}

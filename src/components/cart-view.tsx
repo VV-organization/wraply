@@ -1,0 +1,22 @@
+"use client";
+import {MotionButton} from '@/components/motion-button';
+import {useState} from "react";
+import {ProductImage} from "./product-image";
+import {gameName,hasWear,productHref} from "@/lib/games";
+import Link from "@/components/motion-button";
+import {sumPrices,formatMinor} from "@/lib/money";
+import {validTradeUrl} from "@/lib/validation";
+import {useShop} from "./shop-provider";
+import {Price} from "./price";
+import {Icon} from "./icon";
+import {EmptyInventory} from "./empty-inventory";
+export function CartView(){
+  const shop=useShop();const [message,setMessage]=useState("");const [method,setMethod]=useState("balance");const totals=sumPrices(shop.cart.map(p=>p.priceMinor));
+  async function checkout(){
+    if(!shop.loggedIn){shop.login();return;}
+    if(!validTradeUrl(shop.tradeUrl)){setMessage("Сохраните корректный trade-URL в личном кабинете.");return;}
+    if(process.env.NEXT_PUBLIC_STATIC_EXPORT==="true"){setMessage("Оплата пока недоступна. Выбранные предметы сохранены в корзине.");return;}
+    try{const response=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({productIds:shop.cart.map(p=>p.id),method})});const data=await response.json();setMessage(data.error??"Не удалось оформить покупку. Заказ не создан.");}catch{setMessage("Не удалось связаться с сервером. Деньги не списаны.");}
+  }
+  return <div className="page-container cart-page"><div className="page-heading"><div><h1>Корзина<sup>{shop.cart.length.toString().padStart(2,"0")}</sup></h1></div><Link className="text-link" href="/catalog">Вернуться в каталог <Icon name="arrow"/></Link></div>{!shop.cart.length?<EmptyInventory/>:<div className="cart-layout"><div className="cart-items"><div className="cart-stage-label"><span>ПРЕДМЕТЫ</span><span>СОСТАВ КОРЗИНЫ</span></div>{shop.cart.map((product,index)=><article className="cart-item" key={product.id}><span className="cart-item-index">{String(index+1).padStart(2,"0")}</span><Link className="cart-image" href={productHref(product)}><ProductImage src={product.imageUrl} alt={product.name} width={240} height={180}/></Link><div className="cart-item-name"><span className="weapon-name">{product.weapon}</span><h2><Link href={productHref(product)}>{product.finish}</Link></h2><p>{gameName(product)}{product.condition?` · ${product.condition}`:""}</p>{hasWear(product)&&product.float!==null&&<span className="fine-print">Float {product.float.toFixed(6)}</span>}</div><Price minor={product.priceMinor}/><MotionButton className="icon-button remove-button" aria-label={`Удалить ${product.name}`} onClick={()=>{shop.remove(product.id);setMessage("");}}><Icon name="trash"/></MotionButton></article>)}<div className="delivery-note"><Icon name="link"/><div><h3>Получение через Steam</h3><p>{validTradeUrl(shop.tradeUrl)?"Trade-URL сохранён. Его можно изменить в кабинете.":"Для получения предметов требуется ссылка на обмен Steam."}</p><Link href="/account" className="text-link">{validTradeUrl(shop.tradeUrl)?"Изменить trade-URL":"Добавить trade-URL"} <Icon name="diagonal" size={16}/></Link></div></div></div><aside className="order-summary"><h2>Сумма заказа<span>↗</span></h2><div className="summary-line"><span>Предметы</span><span>{shop.cart.length} шт.</span></div><fieldset className="checkout-method"><legend>Способ оплаты</legend>{[["balance","Баланс Wraps"],["card","Банковская карта"],["sbp","СБП"]].map(([value,label])=><label key={value} className={method===value?"selected":""}><input type="radio" name="checkout-method" checked={method===value} onChange={()=>{setMethod(value);setMessage("");}}/>{label}</label>)}</fieldset><div className="receipt-tear" aria-hidden="true"/><div className="order-total"><span>Итого</span><strong>{formatMinor(totals.wraps)} <small>Wraps</small></strong><span>≈ {formatMinor(totals.rub)} ₽</span><small className="total-rounding">Рублёвый итог рассчитан по общей сумме Wraps.</small></div><MotionButton className="button primary full" onClick={()=>void checkout()}>{shop.loggedIn?"Проверить оформление":"Открыть кабинет"}<Icon name="arrow"/></MotionButton>{message&&<p className="form-message" role="status">{message}</p>}<p className="fine-print">Оплата и отправка предметов пока недоступны.</p></aside></div>}</div>;
+}

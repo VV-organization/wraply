@@ -1,0 +1,25 @@
+'use client';
+import {useState,type CSSProperties} from 'react';
+import Image from 'next/image';
+import Link from '@/components/motion-button';
+import type {Product} from '@/lib/types';
+import {wrapsToRub,formatMinor} from '@/lib/money';
+import {Price} from './price';
+import {ChoicePanel} from './choice-panel';
+import comparisonArt from '@/data/comparison-art.json';
+function comparisonImage(product:Product){
+ const image=comparisonArt[product.id as keyof typeof comparisonArt];
+ return image?(process.env.NEXT_PUBLIC_BASE_PATH??'')+image:product.imageUrl;
+}
+const comparisonPairs:Record<string,[string,string]>={
+ 'M4A1-S':['ref-cs2-b6731ad5-d48c-415c-a9e6-b345ba0c4203','ref-cs2-d02d287d-b8fc-4d9c-b810-632a7d4af6dd'],
+ 'AK-47':['swap-f5d9ed31bbbb','swap-0889d5f8f420'],
+};
+export function SkinCompare({products}:{products:Product[]}){
+ const weapons=[...new Set(products.map(p=>p.weapon))].filter(w=>products.filter(p=>p.weapon===w).length>1);
+ const [weapon,setWeapon]=useState(weapons.includes('M4A1-S')?'M4A1-S':weapons[0]??''),[ids,setIds]=useState<[string,string]>(['','']),[split,setSplit]=useState(50);
+ const pool=products.filter(p=>p.weapon===weapon),left=pool.find(p=>p.id===ids[0])??pool.find(p=>p.id===comparisonPairs[weapon]?.[0])??pool[0],right=pool.find(p=>p.id===ids[1]&&p.id!==left?.id)??pool.find(p=>p.id===comparisonPairs[weapon]?.[1]&&p.id!==left?.id)??pool.find(p=>p.id!==left?.id);
+ if(!left||!right)return null;const pair=[left,right],difference=Math.abs(left.priceMinor-right.priceMinor),cheaper=left.priceMinor<right.priceMinor?left:right;
+ function select(index:number,id:string){const other=pair[1-index],alternate=other.id===id?pair[index].id:other.id;setIds(index===0?[id,alternate]:[alternate,id]);}
+ return <section className="section compare-lab" id="compare" aria-labelledby="compare-title"><div className="chapter-heading"><h2 id="compare-title">Сравнение <em>покрытий</em></h2><p>Выберите два скина для одной модели оружия. Передвиньте ползунок, чтобы сравнить рисунок и цвет.</p></div><div className="compare-instrument"><div className="compare-command"><ChoicePanel label="Оружие" value={weapon} options={weapons.map(w=>({value:w,label:w}))} onChange={w=>{setWeapon(w);setIds(['','']);}}/><span className="micro-label">A / B · СКИНЫ CS2</span></div><div className="compare-canvas" style={{'--split':`${split}%`} as CSSProperties}><span className="compare-letter letter-a" aria-hidden="true">A</span><span className="compare-letter letter-b" aria-hidden="true">B</span><div className="compare-layer compare-right"><Image src={comparisonImage(right)} alt={`B: ${right.name}`} width={1000} height={600}/></div><div className="compare-layer compare-left"><Image src={comparisonImage(left)} alt={`A: ${left.name}`} width={1000} height={600}/></div><span className="compare-divider" aria-hidden="true"><b>↔</b></span><input className="compare-range" type="range" min="0" max="100" value={split} aria-label="Граница сравнения" aria-valuetext={`${split}% покрытия A`} onChange={e=>setSplit(Number(e.target.value))}/><span className="compare-hint">Сдвиньте для сравнения ↔</span></div><div className="compare-pickers">{pair.map((p,i)=><ChoicePanel key={i} label={i===0?'Покрытие A':'Покрытие B'} value={p.id} options={pool.map(p=>({value:p.id,label:p.finish,detail:p.condition,image:p.imageUrl}))} onChange={id=>select(i,id)}/>)}</div><div className="compare-readout">{pair.map((p,i)=><article key={p.id}><div className="readout-name"><b>{i===0?'A':'B'}</b><h3>{p.finish}</h3><Link href={`/catalog/${p.id}`} aria-label={`Открыть ${p.name}`}>↗</Link></div><Price minor={p.priceMinor}/><div className="measure-track"><span style={{width:`${p.priceMinor/Math.max(left.priceMinor,right.priceMinor)*100}%`}}/></div><dl><div><dt>Float</dt><dd>{p.float?.toFixed(6)??'—'}</dd></div><div><dt>Износ</dt><dd>{p.condition}</dd></div><div><dt>StatTrak™</dt><dd>{p.stattrak?'Есть':'Нет'}</dd></div></dl></article>)}</div><div className="compare-delta" role="status">{difference?<><span>{cheaper.finish} дешевле на</span><strong>{formatMinor(Math.abs(wrapsToRub(left.priceMinor)-wrapsToRub(right.priceMinor)))} <small>₽</small></strong></>:<span>Одинаковая стоимость</span>}<p>Чем меньше Float, тем меньше износ.</p></div></div></section>;
+}
