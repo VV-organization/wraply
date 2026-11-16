@@ -107,9 +107,9 @@
   .loadout-console .action-swap .action-swap-text { padding-inline: .75em; }
 }
 
-.cover-copy .collage-action.action-swap {
+:is(.cover-copy,.footer-catalog-action) .collage-action.action-swap {
   --action-height: max(4.5em, 56px);
   width: 100%;
 }
-.cover-copy .action-swap-text { flex: 1; }
-.cover-copy .action-swap-label { font-size: clamp(15px, 1.1vw, 18px); }
+:is(.cover-copy,.footer-catalog-action) .action-swap-text { flex: 1; }
+:is(.cover-copy,.footer-catalog-action) .action-swap-label { font-size: clamp(15px, 1.1vw, 18px); }

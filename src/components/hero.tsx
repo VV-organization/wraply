@@ -3,6 +3,7 @@ import {MotionButton} from '@/components/motion-button';
 import Image from 'next/image';
 import Link from '@/components/motion-button';
 import {useState} from 'react';
+import {project} from '@/config/project';
 import type {Product} from '@/lib/types';
 import {useShop} from './shop-provider';
 import {Ink,ActionLink} from './ink';
@@ -39,7 +40,7 @@ export function Hero({products}:{products:Product[]}){
   return <><section className="wrap-cover" aria-labelledby="cover-title">
     <div className="cover-copy">
       <h1 id="cover-title" aria-label="Скины для CS2, Rust и TF2">
-        <span className="cover-sans" aria-hidden="true">Скины для</span>
+        <span className="cover-sans" aria-hidden="true">{project.coverTitle}</span>
         <em aria-hidden="true" onPointerEnter={event=>{if(event.pointerType==='mouse')setMark(n=>n+1);}}>CS2, Rust и TF2<Ink wide mark={mark}/></em>
       </h1>
       <p className="cover-description">Сравните покрытия, подберите пару к ножу или соберите комплект под свой бюджет.</p>

@@ -2,6 +2,7 @@
 import {MotionButton} from '@/components/motion-button';
 import Link from '@/components/motion-button';
 import {usePathname} from 'next/navigation';
+import {project} from '@/config/project';
 import {useRef,useState} from 'react';
 import {Icon} from './icon';
 import {Ink,ActionLink} from './ink';
@@ -31,7 +32,7 @@ export function Header(){
     </header></>;
 }
 export function Footer(){
-  return <footer className="wrap-footer"><div className="wrap-footer-intro"><h2>Каталог <em>Wraply</em></h2><ActionLink href="/catalog">Открыть каталог</ActionLink></div>
+  return <footer className="wrap-footer"><div className="wrap-footer-intro"><h2>Каталог <em>Wraply</em></h2><div className="footer-catalog-action"><span className="footer-action-measure" aria-hidden="true">{project.coverTitle}</span><ActionLink href="/catalog">Открыть каталог</ActionLink></div></div>
     <nav aria-label="Внизу страницы">{[...nav,['/discovery','Выбор вслепую'],['/account','Кабинет'],['/#faq','Помощь']].map(([url,label])=><Link key={url} href={url}>{label}</Link>)}</nav>
     <div className="wrap-footer-base"><Link href="/" aria-label="Главная Wraply"><Wordmark/></Link><span>1 Wraps = 1,8 ₽</span><a href="#main">Наверх ↑</a></div>
   </footer>;
