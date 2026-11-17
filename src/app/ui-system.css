@@ -1,0 +1,85 @@
+/* Functional roles shared by storefronts, tools and dialogs.
+   Polaroid lettering and motion geometry retain their optical sizing. */
+:is(.micro-label,.section-index,.eyebrow,.fine-print,.weapon-name,
+    .product-meta,.card-float,.quick-label,.price-main small,.price-rub,
+    .choice-trigger small,.choice-options small,.choice-count,
+    .cart-item-name p,.cart-item-name .fine-print,
+    .inspection-top,.inspection-bottom,.inspection-zoom,
+    .catalog-pagination,.catalog-count,.float-labels) {
+  font-size: var(--type-caption);
+}
+/* Explicit caption sizes avoid inheriting a display-size parent. */
+.product-card :is(.product-meta,.weapon-name,.card-float,.quick-label),
+.price-main small,.product-card .price-main small,.choice-trigger small,.choice-options small,.choice-count,
+.cart-item-name .fine-print,.cart-item-name .weapon-name,
+.inspection-top,.inspection-bottom,.inspection-zoom,.float-labels,
+.home .compare-lab .compare-readout .price-rub {
+  font-size: var(--type-caption);
+  line-height: 1.5;
+}
+.product-card .price-rub { font-size: var(--type-caption); }
+.product-card .product-meta { min-height: var(--touch-target); padding-right: 44px; gap: var(--space-2); }
+.favorite-button { width: var(--touch-target); height: var(--touch-target); right: 8px; top: 8px; }
+.remove-button,.cart-notice > .icon-button,.inspection-zoom .icon-button,
+.search-input > button { min-width: var(--touch-target); min-height: var(--touch-target); width: var(--touch-target); height: var(--touch-target); }
+.cart-notice > div > span { font-size: var(--type-caption); }
+.inspection-surfaces { gap: var(--space-1); }
+.inspection-surfaces button {
+  width: var(--touch-target); height: var(--touch-target); padding: 0;
+  background-clip: content-box; border: 12px solid transparent;
+  box-shadow: inset 0 0 0 1px var(--control);
+}
+.inspection-surfaces button[aria-pressed=true] { outline-offset: -8px; }
+.inspection-zoom input { min-height: var(--touch-target); }
+.amount-presets { gap: var(--space-2); }
+.amount-presets button { min-height: var(--touch-target); min-width: var(--touch-target); padding: 8px; font-size: var(--type-secondary); }
+.wrap-header nav a { min-height: var(--touch-target); display: inline-flex; align-items: center; }
+.wrap-tools > a { min-width: var(--touch-target); }
+.choice-options > button[aria-pressed=true] strong { font-weight: 600; }
+.choice-check { display: inline-flex; }
+.add-button { min-width: var(--touch-target); min-height: var(--touch-target); }
+.slot-header button { min-height: var(--touch-target); }
+.readout-name > a { min-width: var(--touch-target); min-height: var(--touch-target); display: inline-flex; align-items: center; justify-content: flex-end; }
+.home .topup-section { overflow: auto; scrollbar-width: thin; }
+.section-games button,.home .arsenal .section-games button { min-height: var(--touch-target); }
+.account-sidebar nav > :is(a,button) { font-size: var(--type-secondary); min-height: var(--touch-target); }
+.field-label,.text-link { font-size: var(--type-secondary); }
+.text-link { min-height: var(--touch-target); align-items: center; }
+.checkout-method label,.payment-choice label { min-height: var(--touch-target); display: inline-flex; align-items: center; gap: var(--space-2); }
+.account-guest > p,.account-panel > p,.product-description,.quick-detail .product-description { font-size: 16px; line-height: 1.6; max-width: 65ch; }
+.discovery-heading h1 { font-weight: 600; letter-spacing: -.035em; }
+.discovery-heading h1 em { font: inherit; color: var(--subtle); }
+.home :is(.section-heading,.chapter-heading,.converter-heading,.blind-heading) > p { font-size: 16px; line-height: 1.5; }
+.wrap-faq details p { font-size: var(--type-secondary); line-height: 1.6; max-width: 65ch; }
+@media(max-width:600px) {
+  :root { --intro-gap: var(--space-3); }
+  .inspection-tools { flex-wrap: wrap; gap: var(--space-2); }
+  .inspection-zoom { margin-left: auto; }
+  .cart-notice > div { padding-right: 24px; }
+  .wrap-header { grid-template-columns: auto minmax(0,1fr); gap: 4px; }
+  .wrap-tools { gap: 4px; }
+  .wrap-tools > .wrap-toggle { width: var(--touch-target); min-width: var(--touch-target); }
+  .wrap-login.action-swap .action-swap-icon { display: none; }
+  .wrap-login.action-swap .action-swap-text { padding-inline: 12px; }
+  .home #steam .money-input input { font-size: clamp(30px,10vw,40px); }
+  .home :is(.section-heading,.chapter-heading,.converter-heading,.blind-heading) > p,
+  .home .cover-copy .cover-description { font-size: var(--type-secondary); }
+}
+@media(max-width:360px) { .wrap-header .wrap-word { font-size: 1.5rem; } }
+
+/* A short viewport must not compress controls or spill into the next chapter. */
+@media(max-height:600px) {
+  .home > :is(#topups,#edits,#compare,#arsenal) {
+    display: block; overflow: auto; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: var(--control) var(--surface);
+  }
+  .home :is(.topup-grid,.arsenal-workspace) { height: auto; min-height: 0; }
+  .home .topup-panel { height: auto; }
+  .home .topup-form-body { gap: 24px; }
+  .home .compare-canvas { flex: none; height: 200px; min-height: 200px; }
+  .home .slot-object { flex: none; height: 180px; }
+  .home .wrap-cover { padding-block: 4px; }
+  .home .cover-copy { position: relative; }
+  .home .cover-description { margin-top: 12px; font-size: 14px; }
+  .home .cover-collage { max-height: 80%; }
+}

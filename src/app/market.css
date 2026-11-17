@@ -2,6 +2,16 @@
    Cobalt, rose and the neutral endpoints come from Extrafazant's dark sections. */
 :root {
   color-scheme: dark;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --type-caption: 12px;
+  --type-secondary: 14px;
+  --touch-target: 44px;
+  --intro-gap: var(--space-4);
   --bg: #101010;
   --surface: #191919;
   --raised: #242424;

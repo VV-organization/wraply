@@ -10,3 +10,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Layout verification
 - Keep marketing sections within one viewport and share outer-spacing tokens. Fill available space with the working content, rather than only increasing section height. Verify child bounds and expanded states at desktop and mobile sizes; long result lists and FAQ answers must remain reachable within their section.
+
+- After shared typography or target-size changes, inspect computed styles at the smallest breakpoint: a more specific mobile selector can silently restore tiny labels or hit areas. Short viewports must keep all controls reachable inside their section.

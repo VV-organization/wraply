@@ -229,13 +229,13 @@
 .home .compare-readout .readout-name{margin-bottom:8px}
 .home .compare-readout .measure-track{margin:8px 0;height:3px}
 .home .compare-readout h3{font-size:24px}
-.home .compare-readout dl{font-size:11px}
+.home .compare-readout dl{font-size:var(--type-caption)}
 .home .compare-readout .price{margin:0}
 .home .compare-lab .chapter-heading h2,.home .arsenal .section-heading h2,.home .topup-section .section-heading h2{font-size:clamp(28px,3.2vw,46px);line-height:1.05}
 .home .compare-lab .compare-command .choice-trigger{min-height:44px;padding:8px 12px}
 .home .compare-canvas{height:clamp(130px,20svh,180px)}
 .home .compare-lab .compare-readout .price-main{font-size:20px}
-.home .compare-lab .compare-readout .price-rub{font-size:11px}
+.home .compare-lab .compare-readout .price-rub{font-size:var(--type-caption)}
 .home .compare-lab .compare-delta{padding-top:10px;margin-top:10px}
 @media(max-width:880px){
   .home .wrap-cover{height:calc(100svh - 146px)}
@@ -269,8 +269,8 @@
   .home .compare-readout dd{text-align:right}
   .home .compare-lab .compare-readout h3{font-size:18px}
   .home .compare-lab .compare-readout .price-main{font-size:16px}
-  .home .compare-readout .price-rub{font-size:10px}
-  .home .compare-delta p{font-size:10px}
+  .home .compare-readout .price-rub{font-size:var(--type-caption)}
+  .home .compare-delta p{font-size:var(--type-caption)}
   .home .compare-command .choice-trigger{min-width:0;min-height:48px}
   .home .compare-command>.micro-label{display:none}
   .home .compare-readout h3{font-size:18px}
@@ -412,7 +412,7 @@
  .home .arsenal{padding-block:16px}
  .home .arsenal .section-heading{margin-bottom:10px}
  .home .arsenal .section-heading h2{font-size:24px}
- .home .arsenal .section-heading p{font-size:11px}
+ .home .arsenal .section-heading p{font-size:var(--type-caption)}
  .home .arsenal .section-games{margin-bottom:8px}
  .home .arsenal .section-games button{min-height:36px;padding-block:4px}
  .home .arsenal .slot-object{height:70px}
@@ -444,7 +444,7 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 :is(.price-main,.money-input input,.converter-equation input){font-variant-numeric:tabular-nums;letter-spacing:-.025em}
 .wrap-header nav a{font-weight:450}
 .game-name{letter-spacing:-.025em}
-.product-meta{font-family:var(--font-sans),sans-serif;font-size:11px;letter-spacing:.02em}
+.product-meta{font-family:var(--font-sans),sans-serif;font-size:var(--type-caption);letter-spacing:.02em}
 .converter-equation label>span{font-family:var(--font-sans),sans-serif}
 .cover-copy{width:min(52%,30rem)}
 @media(max-width:880px){.cover-copy{width:min(90%,30rem)}}
@@ -522,7 +522,7 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 /* Canonical screen rhythm for the landing and selection pages. */
 .home{
  --screen-padding:clamp(16px,2.6svh,28px);
- --section-gap:24px;
+ --section-gap:32px;
 }
 .home>section:not(.wrap-cover){
  height:100svh;min-height:100svh;
@@ -584,7 +584,7 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
  .home .spectrum-theatre{min-height:0}
 }
 @media(max-width:600px){
- .home{--section-gap:18px}
+ .home{--section-gap:24px}
  .home .wrap-faq{grid-template-rows:auto minmax(0,1fr);gap:var(--section-gap)}
  .home .blind-heading>p{margin-top:12px}
  .home .blind-track{margin-bottom:16px}
@@ -602,14 +602,14 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
  .home .spectrum-caption{margin-top:0}
  .home .spectrum-caption h3{font-size:28px}
  .home .spectrum-dock{margin-top:0}
- .home .spectrum-foot{font-size:10px;gap:12px}
+ .home .spectrum-foot{font-size:var(--type-caption);gap:12px}
  .home .arsenal-workspace{display:flex;flex-direction:column;gap:16px}
  .home .loadout-slots{flex:1;min-height:0}
  .home .loadout-console{flex:none}
  .home .slot-object{height:clamp(100px,20svh,180px)}
 }
 @media(max-width:360px){
- .home{--section-gap:14px}
+ .home{--section-gap:16px}
  .home .compare-canvas{height:19svh}
  .home .blind-heading h2{font-size:28px}
  .home .blind-stage-heading h3{font-size:20px}

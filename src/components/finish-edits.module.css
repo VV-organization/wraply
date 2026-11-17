@@ -149,7 +149,7 @@
 .more { margin: 32px auto 0; text-align: center; }
 .more a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; }
 .edits{padding-block:32px}
-.heading{gap:10px}
+.heading{gap:var(--intro-gap)}
 .heading h2{font-size:clamp(30px,3.5vw,52px)}
 .picker{margin:10px auto 18px}
 .poster{padding:16px}
@@ -167,8 +167,8 @@
   .art{height:100px}
   .itemLine{display:block}
   .itemLine strong{font-size:16px}
-  .itemLine small{font-size:11px}
-  .itemLine button{font-size:11px}
+  .itemLine small{font-size:var(--type-caption)}
+  .itemLine button{font-size:var(--type-caption)}
   .checkout strong{font-size:22px}
 }
 
@@ -176,7 +176,7 @@
   .edits{padding-block:16px}
   .heading h2{font-size:27px}
   .heading p{font-size:12px}
-  .caption p{font-size:11px}
+  .caption p{font-size:var(--type-caption)}
   .art{height:100px}
 }
 
@@ -208,3 +208,11 @@
 .slots{flex:1;min-height:0}
 .slot{display:flex;flex-direction:column;min-height:0}
 .edits .art{flex:1;min-height:0;height:auto}
+.heading p{font-size:16px;line-height:1.5}
+@media(max-width:600px){.heading p{font-size:var(--type-secondary)}}
+@media(max-height:600px){
+  .stack{height:auto;min-height:0}
+  .poster{height:auto}
+  .slots{flex:none}
+  .edits .art{flex:none;height:180px}
+}

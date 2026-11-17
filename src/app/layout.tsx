@@ -8,6 +8,7 @@ import {PageReveals} from '@/components/page-reveals';
 import './globals.css';
 import './market.css';
 import './wraply.css';
+import './ui-system.css';
 
 const sans = localFont({src:'../../public/fonts/Inter.ttf',weight:'100 900',variable:'--font-sans',display:'swap'});
 export const metadata:Metadata = {

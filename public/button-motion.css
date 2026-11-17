@@ -17,7 +17,7 @@
 
 :is(.button, .wrap-login, .collage-action).action-swap {
   --action-fill: var(--accent);
-  --action-height: 3.6em;
+  --action-height: max(3.6em, 44px);
   --action-soft: cubic-bezier(.59, 1, .88, 1.01);
   --action-bounce: cubic-bezier(.34, 2.27, .64, 1);
   position: relative;
@@ -65,7 +65,7 @@
     scale .15s var(--action-soft), transform .15s var(--action-soft);
 }
 .action-swap .action-swap-label {
-  font-size: 1.125em;
+  font-size: max(1.125em, 14px);
   font-weight: 600;
   letter-spacing: -.015em;
   text-transform: none;
