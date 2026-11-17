@@ -9,12 +9,14 @@ export function referencePrice(quoteMinor:number){
   const rubMinor=Number((BigInt(quoteMinor)*17n+5n)/10n);
   return {rubMinor,wrapsMinor:rubToWraps(rubMinor)};
 }
+const wearNames:Record<string,string>={'Factory New':'Прямо с завода','Minimal Wear':'Немного поношенное','Field-Tested':'После полевых испытаний','Well-Worn':'Поношенное','Battle-Scarred':'Закалённое в боях'};
 export function expandSnapshot(snapshot:ReferenceSnapshot):Catalog{
   const categories=snapshot.categories.map(c=>({...c,description:''}));
   const names=new Map(categories.map(c=>[c.id,c.name]));
   const products=snapshot.rows.map(([id,name,categoryId,imageUrl,quote,weapon,rarity,marketHashName]):Product=>{
-    const condition=snapshot.game==='cs2'?(name.match(/\((Прямо с завода|Немного поношенное|После полевых испытаний|Поношенное|Закал[её]нное в боях)\)/)?.[1]??''):'';
-    const clean=name.replace(/\s*\((Прямо с завода|Немного поношенное|После полевых испытаний|Поношенное|Закал[её]нное в боях)\)/,'');
+    const rawWear=snapshot.game==='cs2'?(name.match(/\((Прямо с завода|Немного поношенное|После полевых испытаний|Поношенное|Закал[её]нное в боях|Factory New|Minimal Wear|Field-Tested|Well-Worn|Battle-Scarred)\)/)?.[1]??''):'';
+    const condition=wearNames[rawWear]??rawWear;
+    const clean=name.replace(/\s*\((Прямо с завода|Немного поношенное|После полевых испытаний|Поношенное|Закал[её]нное в боях|Factory New|Minimal Wear|Field-Tested|Well-Worn|Battle-Scarred)\)/,'');
     const split=clean.split(' | ');
     return {id:`ref-${snapshot.game}-${id}`,referenceId:id,game:snapshot.game,name,categoryId,categoryName:names.get(categoryId)??'',imageUrl:showcase.assets[`ref-${snapshot.game}-${id}` as keyof typeof showcase.assets]?
         (process.env.NEXT_PUBLIC_BASE_PATH??'')+showcase.assets[`ref-${snapshot.game}-${id}` as keyof typeof showcase.assets]:imageUrl,

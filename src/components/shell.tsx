@@ -1,5 +1,6 @@
 'use client';
 import {MotionButton} from '@/components/motion-button';
+import Image from 'next/image';
 import Link from '@/components/motion-button';
 import {usePathname} from 'next/navigation';
 import {project} from '@/config/project';
@@ -7,6 +8,7 @@ import {useRef,useState} from 'react';
 import {Icon} from './icon';
 import {Ink,ActionLink} from './ink';
 import {useShop} from './shop-provider';
+import {CatalogStickerTrail} from './catalog-sticker-trail';
 
 function Wordmark(){
   return <span className="wrap-word"><svg aria-hidden="true" viewBox="0 0 38 31"><g fill="none" stroke="currentColor" strokeWidth="4.8" strokeLinejoin="round"><path d="m3 4 5.5 23 9-17 4 17L35 4"/><path d="m9 4 3.1 12M23 4l2.1 10"/></g></svg>wraply</span>;
@@ -32,8 +34,8 @@ export function Header(){
     </header></>;
 }
 export function Footer(){
-  return <footer className="wrap-footer"><div className="wrap-footer-intro"><h2>Каталог <em>Wraply</em></h2><div className="footer-catalog-action"><span className="footer-action-measure" aria-hidden="true">{project.coverTitle}</span><ActionLink href="/catalog">Открыть каталог</ActionLink></div></div>
+  return <footer className="wrap-footer"><CatalogStickerTrail><h2>Каталог <em>Wraply</em></h2><div className="footer-catalog-action"><span className="footer-action-measure" aria-hidden="true">{project.coverTitle}</span><ActionLink href="/catalog">Открыть каталог</ActionLink></div></CatalogStickerTrail>
     <nav aria-label="Внизу страницы">{[...nav,['/discovery','Выбор вслепую'],['/account','Кабинет'],['/#faq','Помощь']].map(([url,label])=><Link key={url} href={url}>{label}</Link>)}</nav>
-    <div className="wrap-footer-base"><Link href="/" aria-label="Главная Wraply"><Wordmark/></Link><span>1 Wraps = 1,8 ₽</span><a href="#main">Наверх ↑</a></div>
+    <div className="footer-information"><div><Link href="/" aria-label="Главная Wraply"><Wordmark/></Link><p>Скины для CS2, Rust и Team Fortress 2.</p><span>1 Wraps = 1,8 ₽</span></div><nav className="footer-documents" aria-label="Правовая информация"><Link href="/terms">Пользовательское соглашение</Link><Link href="/privacy">Политика конфиденциальности</Link><Link href="/#faq">Вопросы и ответы</Link></nav><div className="footer-payments"><div aria-label="Логотипы платёжных систем"><Image src={`${process.env.NEXT_PUBLIC_BASE_PATH??''}/payments/mir.svg`} alt="Мир" width={80} height={24}/><Image src={`${process.env.NEXT_PUBLIC_BASE_PATH??''}/payments/sbp.svg`} alt="СБП" width={26} height={32}/></div></div></div><div className="wrap-footer-base footer-bottom"><span>© Wraply</span><span>Steam и игровые товарные знаки принадлежат их правообладателям.</span><a href="#main">Наверх ↑</a></div>
   </footer>;
 }

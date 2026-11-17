@@ -1,5 +1,6 @@
 'use client';
 
+import {categoryLabel} from "@/lib/catalog-labels";
 import {MotionButton} from '@/components/motion-button';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -77,7 +78,7 @@ export function FinishEdits({products}: {products: Product[]}) {
                   <span className={styles.eye}><Icon name="eye" size={18}/></span>
                 </MotionButton>
                 <div className={styles.itemLine}>
-                  <span><small>{product.weapon}</small><strong>{product.finish}</strong></span>
+                  <span><small>{categoryLabel(product.weapon)}</small><strong>{product.finish}</strong></span>
                   {edition.slots[index].length > 1 && (
                     <MotionButton onClick={() => swap(index)} aria-label={'Заменить ' + product.name}>
                       <Icon name="swap" size={16}/> Заменить

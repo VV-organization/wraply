@@ -9,6 +9,7 @@ import './globals.css';
 import './market.css';
 import './wraply.css';
 import './ui-system.css';
+import './catalog-posters.css';
 
 const sans = localFont({src:'../../public/fonts/Inter.ttf',weight:'100 900',variable:'--font-sans',display:'swap'});
 export const metadata:Metadata = {
@@ -18,7 +19,7 @@ export const metadata:Metadata = {
 };
 export default function RootLayout({children}:{children:React.ReactNode}){
   return <html lang="ru" data-scroll-behavior="smooth" className={sans.variable}>
-    <head><link rel="stylesheet" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/button-motion.css`}/></head>
+    <head><link rel="preconnect" href="https://community.akamai.steamstatic.com"/><link rel="preconnect" href="https://community.cloudflare.steamstatic.com"/><link rel="stylesheet" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/button-motion.css`}/></head>
     <body>
     <ShopProvider catalog={getCatalog()}><Header/><main id="main">{children}</main><Footer/><QuickView/><PageReveals/></ShopProvider>
   </body></html>;

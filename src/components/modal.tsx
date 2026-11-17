@@ -2,7 +2,7 @@
 import {MotionButton} from '@/components/motion-button';
 import {useEffect,useRef,type ReactNode} from "react";
 import {Icon} from "./icon";
-export function Modal({title,onClose,children,wide=false,footer}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean;footer?:ReactNode}) {
+export function Modal({title,onClose,children,wide=false,footer,className=''}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean;footer?:ReactNode;className?:string}) {
   const ref=useRef<HTMLDialogElement>(null);
   useEffect(()=>{
     const dialog=ref.current; const previous=document.activeElement as HTMLElement|null;
@@ -10,7 +10,7 @@ export function Modal({title,onClose,children,wide=false,footer}:{title:string;o
     dialog?.showModal(); document.body.style.overflow="hidden";
     return ()=>{ dialog?.close(); document.body.style.overflow=overflow; previous?.focus(); };
   },[]);
-  return <dialog ref={ref} className={`modal ${wide?"modal-wide":""}`} aria-label={title} onKeyDown={event=>{
+  return <dialog ref={ref} className={`modal ${wide?"modal-wide":""} ${className}`} aria-label={title} onKeyDown={event=>{
     if(event.key!=="Tab")return;
     const controls=[...event.currentTarget.querySelectorAll<HTMLElement>('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])')].filter(node=>node.getClientRects().length>0);
     const first=controls[0],last=controls.at(-1);

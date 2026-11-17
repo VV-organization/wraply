@@ -1,4 +1,5 @@
 'use client';
+import {categoryLabel} from "@/lib/catalog-labels";
 import {MotionButton} from '@/components/motion-button';
 import Image from 'next/image';
 import Link from '@/components/motion-button';
@@ -55,7 +56,7 @@ export function Hero({products}:{products:Product[]}){
           onFocus={()=>setActive(id)} onBlur={()=>setActive(null)}
           onClick={()=>setPreviewProduct(p)} aria-label={`Рассмотреть ${p.name}`}>
           <span className="print-photo"><span aria-hidden="true" className="print-type">{p.finish}</span><Image src={p.imageUrl} alt="" width={520} height={400} loading="eager"/></span>
-          <span className="print-credit"><span>{p.weapon} / {p.finish}</span><Icon name="diagonal" size={14}/></span>
+          <span className="print-credit"><span>{categoryLabel(p.weapon)} / {p.finish}</span><Icon name="diagonal" size={14}/></span>
         </MotionButton>;
       })}
       <span className="cover-sticker" aria-hidden="true"><svg viewBox="0 0 110 100" fill="none"><path d="M15 20 40 12 53 4 66 15 95 14 99 39 108 56 95 72 93 90 68 88 51 98 36 86 11 89 13 65 3 49 14 38Z" fill="currentColor"/><path d="m25 28 9 47 20-37 10 37 22-48" stroke="#161116" strokeWidth="8" strokeLinejoin="round"/><path d="m30 21 5 17m32-17 4 15" stroke="#161116" strokeWidth="5"/></svg></span>

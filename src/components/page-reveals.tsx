@@ -46,7 +46,7 @@ export function PageReveals(){
     },{threshold:0,rootMargin:'0px 0px -12px 0px'});
 
     function add(node:HTMLElement){
-      if(targets.has(node)||node.closest('.sr-only,.skip-link,.game-set[aria-hidden="true"],script,style'))return;
+      if(targets.has(node)||node.closest('.catalog-sticker-layer,.legal-page,.product-card,.sr-only,.skip-link,.game-set[aria-hidden="true"],script,style'))return;
       targets.set(node,{visible:visible(node),played:false});
       node.dataset.reveal='pending';
       intersection.observe(node);
@@ -91,6 +91,8 @@ export function PageReveals(){
     }
     function schedule(){if(!frame)frame=requestAnimationFrame(scan);}
     const mutation=new MutationObserver(records=>{
+      records=records.filter(record=>!(record.target instanceof Element&&record.target.closest('.catalog-sticker-layer')));
+      if(!records.length)return;
       records.forEach(record=>{
         if(record.type==='characterData'||record.type==='childList'||record.attributeName==='src'){
           const element=record.target instanceof HTMLElement?record.target:record.target.parentElement;
@@ -108,24 +110,13 @@ export function PageReveals(){
       }
     }
     function preference(){if(reduced.matches)for(const [node] of targets)finish(node);}
-    function imageLoaded(event:Event){
-      if(!(event.target instanceof HTMLImageElement))return;
-      const node=event.target.closest<HTMLElement>('[data-reveal]');
-      const state=node&&targets.get(node);
-      if(node&&state?.played&&!state.animation){
-        state.played=false;
-        node.dataset.reveal='pending';
-        schedule();
-      }
-    }
     document.addEventListener('focusin',focus);
-    document.addEventListener('load',imageLoaded,true);
     reduced.addEventListener('change',preference);
     scan();
     return()=>{
       disposed=true;cancelAnimationFrame(frame);mutation.disconnect();intersection.disconnect();
       document.removeEventListener('focusin',focus);reduced.removeEventListener('change',preference);
-      document.removeEventListener('load',imageLoaded,true);
+
       for(const [node,state] of targets){state.animation?.cancel();delete node.dataset.reveal;}
     };
   },[]);

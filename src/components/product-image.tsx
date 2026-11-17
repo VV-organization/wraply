@@ -5,5 +5,5 @@ import {useState} from 'react';
 export function ProductImage(props:ImageProps){
  const [failed,setFailed]=useState<string|null>(null);
  const src=String(props.src);
- return !src||failed===src?<span className="image-unavailable" role="img" aria-label={props.alt}>Изображение<br/>недоступно</span>:<Image {...props} alt={props.alt} onError={()=>setFailed(src)}/>;
+ return !src||failed===src?<span className="image-unavailable" role="img" aria-label={props.alt}>Изображение недоступно</span>:<Image {...props} alt={props.alt} onError={()=>setFailed(src)}/>;
 }

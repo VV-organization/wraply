@@ -5,6 +5,7 @@ import Link, {MotionButton} from '@/components/motion-button';
 import Image from 'next/image';
 import type {Catalog, Category} from '@/lib/types';
 import {games, type GameId} from '@/lib/games';
+import {categoryLabel} from '@/lib/catalog-labels';
 import {Icon} from './icon';
 import {Ink} from './ink';
 import {GameTabs} from './game-tabs';
@@ -12,11 +13,6 @@ import {useGameCatalog} from './use-game-catalog';
 import showcase from '@/data/showcase-art.json';
 import categoryArt from '@/data/category-art.json';
 
-const categoryNames: Record<string, string> = {
-  Armor: 'Броня', Clothing: 'Одежда', Misc: 'Разное', Resource: 'Ресурсы', Weapon: 'Оружие',
-  Hat: 'Головные уборы', 'Rocket Launcher': 'Ракетницы', 'War Paint': 'Боевая раскраска',
-  'Special Taunt': 'Насмешки', Tool: 'Инструменты',
-};
 const tf2Categories = ['Hat', 'Rocket Launcher', 'War Paint', 'Special Taunt', 'Tool'];
 
 function CategoryLinks({catalog, game}: {catalog: Catalog; game: GameId}) {
@@ -31,7 +27,7 @@ function CategoryLinks({catalog, game}: {catalog: Catalog; game: GameId}) {
       return <Link key={category.id} className="class-line"
         href={`/catalog?game=${game}&category=${encodeURIComponent(category.id)}`}>
         {sample && <Image src={categoryArt[sample.id as keyof typeof categoryArt]?(process.env.NEXT_PUBLIC_BASE_PATH??'')+categoryArt[sample.id as keyof typeof categoryArt]:sample.imageUrl} alt="" width={180} height={106}/>}
-        <span>{categoryNames[category.name] ?? category.name}<Ink/></span><Icon name="diagonal"/>
+        <span>{categoryLabel(category.name)}<Ink/></span><Icon name="diagonal"/>
       </Link>;
     })}
     <Link className="text-link category-all" href={`/catalog?game=${game}`}>

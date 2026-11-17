@@ -394,7 +394,7 @@
 .section-games button{min-height:44px;padding:8px 24px;border:1px solid var(--control);font-size:16px}
 .section-games button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
 .home .arsenal .loadout-slot h3{overflow-wrap:anywhere}
-.home .class-list .category-all{display:block;text-align:center;padding-top:16px;text-decoration:underline}
+.home .class-list .category-all{display:inline-flex;align-self:center;justify-content:center;width:fit-content;max-width:100%;margin-top:16px;text-align:center;padding:0 0 8px;text-decoration:none}
 @media(min-width:881px){
  .home .wrap-categories .class-line{min-height:12svh}
  .home .wrap-categories .class-line>img{height:11svh}
@@ -542,6 +542,20 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 .home .topup-panel .money-input input{font-size:clamp(36px,7svh,72px)}
 .home .converter-equation{flex:1;min-height:0;margin:3svh 0}
 .home .converter-rule{padding-block:16px}
+.home>section.converter{height:auto;min-height:0;padding-block:48px}
+.home .converter .converter-heading{margin-bottom:0}
+.home .converter .converter-equation{flex:none;width:min(100%,1000px);grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);margin:32px auto;gap:24px;align-items:center}
+.home .converter .converter-equation input{font-size:clamp(40px,6vw,80px);padding-block:16px;line-height:1.1}
+.home .converter .converter-equation label{gap:12px}
+.home .converter .converter-equation label>span{font-size:14px}
+.home .converter .equation-equals{font-size:32px}
+.home .converter .converter-rule{width:min(100%,1000px);margin-inline:auto;padding-block:16px;font-size:14px}
+@media(max-width:600px){
+ .home>section.converter{padding-block:32px}
+ .home .converter .converter-equation{gap:8px;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);margin-block:24px}
+ .home .converter .equation-equals{margin-top:-32px;font-size:24px}
+ .home .converter .converter-rule{gap:16px;font-size:13px}
+}
 .home .wrap-faq{align-content:stretch;align-items:start;min-height:0}
 .home .wrap-faq>div{
  display:grid;grid-template-rows:repeat(5,minmax(min-content,1fr));
@@ -619,7 +633,10 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
  .home .spectrum-caption h3{font-size:23px}
  .home .spectrum-caption .price-main{font-size:24px}
 }
-.home>section.wrap-faq{align-content:stretch}
+.home>section.wrap-faq{height:auto;min-height:0;max-height:none;align-content:start;grid-template-rows:auto;padding-block:48px;overflow:visible}
+.home .wrap-faq>div{display:block;height:auto;max-height:none;overflow:visible}
+.home .wrap-faq summary{min-height:56px;padding:20px 0;font-size:clamp(16px,1.4vw,22px)}
+.home .wrap-faq details:not([open]) summary{height:auto}
 .home>section.wrap-categories{display:flex;flex-direction:column}
 .home .wrap-categories .class-list{flex:1;display:flex;flex-direction:column;min-height:0}
 .home .wrap-categories .class-line{flex:1;min-height:0}
@@ -661,16 +678,20 @@ h1,h2,h3{font-family:var(--font-sans),sans-serif;letter-spacing:-.03em}
 .home .cover-copy .cover-description{grid-column:1/-1;grid-row:2}
 .home .cover-copy .collage-action.action-swap{grid-column:2;grid-row:3;width:100%;max-width:100%;min-width:0;contain:inline-size}
 @media(max-width:600px){
+ .home .cover-copy .collage-action.action-swap{min-width:min(224px,calc(100vw - 40px))}
  .home .cover-copy .action-swap-text{padding-inline:.65em}
- .home .cover-copy .action-swap-label{font-size:13px;line-height:1.15}
+ .home .cover-copy .action-swap-label{font-size:13px;line-height:1.15;white-space:nowrap}
 }
 
 :root{--cover-title-size:clamp(44px,5.5vw,96px)}
-.footer-catalog-action{display:inline-grid;grid-template-columns:max-content;max-width:100%}
-.footer-action-measure{grid-area:1/1;height:0;overflow:hidden;visibility:hidden;white-space:nowrap;font:600 var(--cover-title-size)/0 var(--font-sans),sans-serif;letter-spacing:-.035em}
-.footer-catalog-action .collage-action.action-swap{grid-area:1/1;contain:inline-size;min-width:0}
+/* Keep the hero-title measure independent of the button's intrinsic sizing. */
+.footer-catalog-action{position:relative;width:max-content;min-width:min(100%,224px);max-width:100%;height:max(calc(4.5 * var(--action-unit)),56px);margin:28px auto 0}
+.footer-action-measure{display:block;visibility:hidden;white-space:nowrap;font:600 var(--cover-title-size)/1 var(--font-sans),sans-serif;letter-spacing:-.035em}
+.footer-catalog-action .collage-action.action-swap{position:absolute;inset:0;width:100%;margin:0;contain:none;min-width:0}
+.footer-catalog-action .action-swap-label{white-space:nowrap}
 @media(max-width:600px){
  :root{--cover-title-size:clamp(30px,8.6vw,46px)}
+ .footer-catalog-action{margin-top:22px}
  .footer-catalog-action .action-swap-text{padding-inline:.65em}
  .wrap-footer .footer-catalog-action .action-swap-label{font-size:13px;line-height:1.15}
 }
